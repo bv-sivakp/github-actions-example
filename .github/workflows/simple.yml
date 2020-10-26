@@ -2,8 +2,6 @@ name: shell commands
 
 on:
   pull_request:
-  schedule:
-      - cron: '*/5 * * * *'
 jobs:
   run-shell-command:
     runs-on: ubuntu-latest
