@@ -2,7 +2,8 @@ name: shell commands
 
 on:
   schedule:
-      - cron: "*/5 * * * *"
+      - cron: "0/5 * * * *"
+      - cron: "0/6 * * * *"
   pull_request:
 
 jobs:
