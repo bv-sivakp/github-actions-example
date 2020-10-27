@@ -10,6 +10,8 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
+        # continue-on-error: true
+        # timeout-minutes: 360
       - name: Dump job context
         # if: failure()
         env:
