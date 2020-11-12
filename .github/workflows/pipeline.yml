@@ -30,7 +30,7 @@ jobs:
        - name: content with file replacement
          run: |
           sed -i "s/#APP-NAME#/${{ github.event.inputs.APPNAME }}/g" ./testfile.json
-          sed -i "s/#VERSIONE#/${{ github.event.inputs.VERSION }}/g" ./testfile.json
+          sed -i "s/#VERSION#/${{ github.event.inputs.VERSION }}/g" ./testfile.json
           cat ./testfile.json
               
            
