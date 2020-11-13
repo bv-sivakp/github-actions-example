@@ -20,7 +20,8 @@ jobs:
      - name: Echo Dispatcher inputs
        run: |
          echo ${{ github.event.inputs.VERSION }}
-         echo ${ ${{ github.event.inputs.APPNAME }},, }
+         appname = echo ${{ github.event.inputs.APPNAME }}
+         echo ${{ appname,, }}
   replace-file-content:
     name: Replace file contents
     runs-on: ubuntu-latest
