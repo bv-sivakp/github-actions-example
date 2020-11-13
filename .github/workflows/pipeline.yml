@@ -21,7 +21,9 @@ jobs:
        run: |
          echo ${{ github.event.inputs.VERSION }}
          echo ${{ github.event.inputs.APPNAME }}
-         appname = $(echo ${{ github.event.inputs.APPNAME }})
+         echo APPNAME = $(echo ${{ github.event.inputs.APPNAME }}) >> $GITHUB_ENV
+         echo ${{ env.APPNAME  }}
+         echo $(${{ github.event.inputs.APPNAME }},,)
          echo ${appname,,}
   replace-file-content:
     name: Replace file contents
