@@ -20,11 +20,8 @@ jobs:
      - name: Echo Dispatcher inputs
        run: |
          echo ${{ github.event.inputs.VERSION }}
-         echo ${{ github.event.inputs.APPNAME }}
-         echo APPNAME = $(echo ${{ github.event.inputs.APPNAME }}) >> $GITHUB_ENV
-         echo ${{ env.APPNAME  }}
-         echo $(${{ github.event.inputs.APPNAME }},,)
-         echo ${appname,,}
+         echo ${{ github.event.inputs.APPNAME }}         
+         echo ${${{ github.event.inputs.APPNAME }},,}
   replace-file-content:
     name: Replace file contents
     runs-on: ubuntu-latest
@@ -32,8 +29,7 @@ jobs:
        - name: Checkout
          uses: actions/checkout@v2
        - name: content with file replacement
-         run: |
-          echo awk '{print tolower($0)}' < ${{ github.event.inputs.APPNAME }} 
+         run: |          
           sed -i "s/#APP-NAME#/${{ github.event.inputs.APPNAME }}/g" ./testfile.json
           sed -i "s/#VERSION#/${{ github.event.inputs.VERSION }}/g" ./testfile.json
           cat ./testfile.json
