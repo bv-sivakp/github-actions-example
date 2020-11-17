@@ -1,0 +1,24 @@
+name: download artifact
+
+on:
+  push:
+   branches:
+    - '**'
+
+jobs:
+  download-artifacts:
+    name: Download artifacts
+    runs-on: ubuntu-latest
+    steps:
+     - name: Install jq
+       run: |
+         RUN apt update && apt install -y jq gettext-base
+     - name: Get artifact id
+       run: |
+         echo artifactId = $(curl -sL https://api.github.com/repos/bv-sivakp/github-actions-example/actions/artifacts/runs | jq -r '.artifacts[0].id?') >> $GITHUB_ENV
+     - name: Download artifacts
+       run: |
+         curl -sL https://api.github.com/repos/bv-sivakp/github-actions-example/actions/artifacts/${{ env.artifactId }}/zip
+         ll -a
+              
+           
