@@ -12,13 +12,12 @@ jobs:
     steps:
      - name: Get artifact id
        run: |
-         echo $(curl -sL https://api.github.com/repos/bv-sivakp/github-actions-example/actions/artifacts | jq -r '.artifacts[0].id?')
-         echo ART_ID= curl -sL https://api.github.com/repos/bv-sivakp/github-actions-example/actions/artifacts | jq -r '.artifacts[0].id?' >> $GITHUB_ENV
+         echo $(curl -sL https://api.github.com/repos/bv-sivakp/github-actions-example/actions/artifacts | jq -r '.artifacts[0].id?')    
          echo "action_state=yellow" >> $GITHUB_ENV
      - name: Download artifacts
        run: |
          echo $action_state
-         curl -sL https://api.github.com/repos/bv-sivakp/github-actions-example/actions/artifacts/$ART_ID/zip
+         curl -sL https://api.github.com/repos/bv-sivakp/github-actions-example/actions/artifacts/26805710/zip
          ll -a
               
            
