@@ -13,10 +13,13 @@ jobs:
      - name: Get artifact id
        shell: bash
        run: |
-         echo ARTIFACT_ID = $(curl -sL https://api.github.com/repos/bv-sivakp/github-actions-example/actions/artifacts | jq -r '.artifacts[0].id?') >> $GITHUB_ENV
+         echo "ARTIFACT_ID=$(curl -sL https://api.github.com/repos/bv-sivakp/github-actions-example/actions/artifacts | jq -r '.artifacts[0].id?')" >> $GITHUB_ENV
+         echo ${{ env.ARTIFACT_ID }}
      - name: Download artifacts
        shell: bash
        run: |
+         echo $ARTIFACT_ID
+         echo ${{ env.ARTIFACT_ID }} 
          curl -o artifacts.zip -L \
             -H "authorization: token ${{ secrets.PERSONAL_ACCESS_TOKEN }}" \
             -H "Accept: application/vnd.github.v3+json" \
