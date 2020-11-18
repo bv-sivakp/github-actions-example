@@ -23,5 +23,6 @@ jobs:
             https://api.github.com/repos/bv-sivakp/github-actions-example/actions/artifacts/26805710/zip \
      - name: Display structure of downloaded files
        run: |
-         unzip artifacts.zip
+         unzip -o artifacts.zip
+         rm artifacts.zip
          ls -R
