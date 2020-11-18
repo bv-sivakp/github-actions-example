@@ -18,3 +18,9 @@ jobs:
         with:
           name: test-file
           path: testfile.json
+      - name: download artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: test-file
+      - name: Display structure of downloaded files
+        run: ls -R
