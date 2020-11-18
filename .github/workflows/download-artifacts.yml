@@ -20,5 +20,4 @@ jobs:
          curl -L \
             -H "authorization: token ${{ secrets.PERSONAL_ACCESS_TOKEN }}" \
             -H "Accept: application/vnd.github.v3+json" \
-            https://api.github.com/repos/bv-sivakp/github-actions-example/actions/artifacts/26805710/zip                          
-         ll -a
+            https://api.github.com/repos/bv-sivakp/github-actions-example/actions/artifacts/26805710/zip
