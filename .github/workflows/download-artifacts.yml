@@ -10,9 +10,6 @@ jobs:
     name: Download artifacts
     runs-on: ubuntu-latest
     steps:
-     - name: Install jq
-       run: |
-         apt update && apt install -y jq gettext-base
      - name: Get artifact id
        run: |
          echo artifactId = $(curl -sL https://api.github.com/repos/bv-sivakp/github-actions-example/actions/artifacts/runs | jq -r '.artifacts[0].id?') >> $GITHUB_ENV
