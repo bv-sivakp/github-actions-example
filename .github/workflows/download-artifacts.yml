@@ -14,7 +14,8 @@ jobs:
        shell: bash
        run: |
          ARTIFACT_ID=$(curl -sL https://api.github.com/repos/bv-sivakp/github-actions-example/actions/artifacts | jq -r '.artifacts[0].id?') 
-         echo "::add-mask::$ARTIFACT_ID" >> $GITHUB_ENV
+         echo "::add-mask::$ARTIFACT_ID" > ARTIFACTID 
+         echo "ARTIFACTID" >> $GITHUB_ENV
          echo "::add-mask::Mona The Octocat"
          MY_NAME="Mona The Octocat"
          echo "MY_NAME"
