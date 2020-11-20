@@ -13,15 +13,11 @@ jobs:
      - name: Get artifact id
        shell: bash
        run: |
-         ARTIFACTID=$(curl -sL https://api.github.com/repos/bv-sivakp/github-actions-example/actions/artifacts | jq -r '.artifacts[0].id?') 
-         ARTIFACT_ID=$(curl -sL https://api.github.com/repos/bv-sivakp/github-actions-example/actions/artifacts | jq -r '.artifacts[0].id?')
-         echo "$ARTIFACT_ID" >> $GITHUB_ENV
+         echo "ARTIFACT_ID=$(curl -sL https://api.github.com/repos/bv-sivakp/github-actions-example/actions/artifacts | jq -r '.artifacts[0].id?')" >> $GITHUB_ENV
          echo "::add-mask::Mona The Octocat"
          MY_NAME="Mona The Octocat"
          echo "MY_NAME"
-         echo "::add-mask::$MY_NAME"
-         echo "ARTIFACTID"
-         echo "::add-mask::$ARTIFACTID"
+         echo "::add-mask::$MY_NAME"         
      - name: Download artifacts
        shell: bash
        run: |
