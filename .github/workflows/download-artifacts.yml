@@ -15,7 +15,7 @@ jobs:
        run: |
          ARTIFACT_ID=$(curl -sL https://api.github.com/repos/bv-sivakp/github-actions-example/actions/artifacts | jq -r '.artifacts[0].id?') 
          echo "::add-mask::$ARTIFACT_ID" > ARTIFACTID 
-         echo "ARTIFACTID" >> $GITHUB_ENV
+         echo "$ARTIFACTID" >> $GITHUB_ENV
          echo "::add-mask::Mona The Octocat"
          MY_NAME="Mona The Octocat"
          echo "MY_NAME"
@@ -26,7 +26,7 @@ jobs:
          curl -o artifacts.zip -L \
             -H "authorization: token ${{ secrets.PERSONAL_ACCESS_TOKEN }}" \
             -H "Accept: application/vnd.github.v3+json" \
-            https://api.github.com/repos/bv-sivakp/github-actions-example/actions/artifacts/${{ env.ARTIFACT_ID }}/zip \
+            https://api.github.com/repos/bv-sivakp/github-actions-example/actions/artifacts/$ARTIFACTID/zip \
      - name: Display structure of downloaded files
        run: |
          unzip -o artifacts.zip
