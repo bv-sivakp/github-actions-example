@@ -11,9 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
      - name: Test Scope
+       shell: bash
        run: |
-         VERIFY = "test"
-         echo $VERIFY 
+         sh VERIFY = "test"
+         sh echo $VERIFY 
      - name: Get artifact id
        shell: bash
        run: |
