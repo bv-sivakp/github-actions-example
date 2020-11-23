@@ -9,12 +9,7 @@ jobs:
   download-artifacts:
     name: Download artifacts
     runs-on: ubuntu-latest
-    steps:
-     - name: Test Scope
-       shell: bash
-       run: |
-         sh VERIFY = "test"
-         sh echo $VERIFY 
+    steps:     
      - name: Get artifact id
        shell: bash
        run: |
