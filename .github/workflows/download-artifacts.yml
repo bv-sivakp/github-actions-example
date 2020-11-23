@@ -13,6 +13,9 @@ jobs:
      - name: Get artifact id
        shell: bash
        run: |
+         mysecretvalue = "secret" 
+         verifysecret = $(echo "::add-mask::$mysecretvalue")
+         echo $verifysecret
          echo "ARTIFACT_ID=$(curl -sL https://api.github.com/repos/bv-sivakp/github-actions-example/actions/artifacts | jq -r '.artifacts[0].id?')" > /dev/null >> $GITHUB_ENV            
      - name: Download artifacts
        shell: bash
