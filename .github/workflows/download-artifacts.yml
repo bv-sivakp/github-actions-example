@@ -13,14 +13,14 @@ jobs:
      - name: Get artifact id
        shell: bash
        run: |
-         echo "ARTIFACT_ID=$(curl -sL https://api.github.com/repos/bv-sivakp/github-actions-example/actions/artifacts | jq -r '.artifacts[0].id?')" >> $GITHUB_ENV            
+         export ARTIFACT_ID=$(curl -sL https://api.github.com/repos/bv-sivakp/github-actions-example/actions/artifacts | jq -r '.artifacts[0].id?')          
      - name: Download artifacts
        shell: bash
        run: |
          curl -o artifacts.zip -L \
             -H "authorization: token ${{ secrets.PERSONAL_ACCESS_TOKEN }}" \
             -H "Accept: application/vnd.github.v3+json" \
-            https://api.github.com/repos/bv-sivakp/github-actions-example/actions/artifacts/${{env.ARTIFACT_ID}}/zip \
+            https://api.github.com/repos/bv-sivakp/github-actions-example/actions/artifacts/$ARTIFACT_ID/zip \
      - name: Display structure of downloaded files
        run: |
          unzip -o artifacts.zip
