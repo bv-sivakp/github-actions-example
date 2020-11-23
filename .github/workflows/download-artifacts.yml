@@ -13,7 +13,7 @@ jobs:
      - name: Get artifact id
        shell: bash
        run: |
-         echo "ARTIFACT_ID=$(curl -sL https://api.github.com/repos/bv-sivakp/github-actions-example/actions/artifacts | jq -r '.artifacts[0].id?')" >> $GITHUB_ENV               
+         echo "ARTIFACT_ID=$(curl -sL https://api.github.com/repos/bv-sivakp/github-actions-example/actions/artifacts | jq -r '.artifacts[0].id?')" >> $GITHUB_ENV  > /dev/null          
      - name: Download artifacts
        shell: bash
        run: |
