@@ -10,10 +10,14 @@ jobs:
     name: Download artifacts
     runs-on: ubuntu-latest
     steps:
+     - name: Test Scope
+       run: |
+         VERIFY = "test"
+         echo $VERIFY 
      - name: Get artifact id
        shell: bash
        run: |
-         echo "::add-mask::ARTIFACT_ID=$(curl -sL https://api.github.com/repos/bv-sivakp/github-actions-example/actions/artifacts | jq -r '.artifacts[0].id?')" >> $GITHUB_ENV            
+         echo "ARTIFACT_ID=$(curl -sL https://api.github.com/repos/bv-sivakp/github-actions-example/actions/artifacts | jq -r '.artifacts[0].id?')" >> $GITHUB_ENV            
      - name: Download artifacts
        shell: bash
        run: |
