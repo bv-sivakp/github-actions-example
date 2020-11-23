@@ -1,0 +1,36 @@
+name: workflow dispatch pipeline
+
+on:
+  workflow_dispatch:
+    inputs:
+      VERSION:
+        description: "Version"
+        required: true
+        default: "0.1.0"
+      APPNAME:
+        description: "Application name"
+        required: true
+        default: "web-api"
+
+jobs:
+  verify-input-parameters:
+    name: Verify input parameters
+    runs-on: ubuntu-latest
+    steps:
+     - name: Echo Dispatcher inputs
+       run: |
+         echo ${{ github.event.inputs.VERSION }}
+         echo ${{ github.event.inputs.APPNAME }}
+  replace-file-content:
+    name: Replace file contents
+    runs-on: ubuntu-latest
+    steps:
+       - name: Checkout
+         uses: actions/checkout@v2
+       - name: content with file replacement
+         run: |          
+          sed -i "s/#APP-NAME#/$(echo ${{ github.event.inputs.APPNAME }} | tr [A-Z] [a-z])/g" ./testfile.json
+          sed -i "s/#VERSION#/${{ github.event.inputs.VERSION }}/g" ./testfile.json
+          cat ./testfile.json
+              
+           
