@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: echo a string
-        run: eccho "Hello world"
+        run: echo "Hello world"
       - name: muliline script
         run: |
           node -v
