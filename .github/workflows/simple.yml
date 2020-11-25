@@ -1,6 +1,8 @@
 name: shell commands
 
 on:
+  push:
+    branches: '**'
   pull_request:
 jobs:
   run-shell-command:
