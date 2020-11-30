@@ -32,19 +32,18 @@ jobs:
        - name: Checkout
          uses: actions/checkout@v2
        - name: Replace it wit latest
-         if: contains(github.event.inputs.ARTIFACTID, 'lastCompleted')
+         if: github.event.inputs.ARTIFACTID == 'lastCompleted'
          run: |
-          echo "ARTIFACT_ID=$(${{ github.event.inputs.ARTIFACTID }})" >> $GITHUB_ENV
-          sed -i "s/#ARTIFACT_ID#/${{ env.ARTIFACT_ID }}/g" ./testfile.json
+          echo "ARTIFACT_ID=${{ github.event.inputs.ARTIFACTID }}" >> $GITHUB_ENV          
        - name: Replace it with Input value
          if: contains(github.event.inputs.ARTIFACTID, 'lastCompleted') != true
          run: |
-          echo "ARTIFACT_ID=${{ github.event.inputs.ARTIFACTID }}" >> $GITHUB_ENV
-          sed -i "s/#ARTIFACT_ID#/${{ env.ARTIFACT_ID }}/g" ./testfile.json       
+          echo "ARTIFACT_ID=${{ github.event.inputs.ARTIFACTID }}" >> $GITHUB_ENV         
        - name: content with file replacement
          run: |          
           sed -i "s/#APP-NAME#/$(echo ${{ github.event.inputs.APPNAME }} | tr [A-Z] [a-z])/g" ./testfile.json
           sed -i "s/#VERSION#/${{ github.event.inputs.VERSION }}/g" ./testfile.json
+          sed -i "s/#ARTIFACT_ID#/${{ env.ARTIFACT_ID }}/g" ./testfile.json
           cat ./testfile.json
               
            
