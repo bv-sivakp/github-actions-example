@@ -36,7 +36,7 @@ jobs:
          run: |
           echo "ARTIFACT_ID=${{ github.event.inputs.ARTIFACTID }}" >> $GITHUB_ENV          
        - name: Replace it with Input value
-         if: contains(github.event.inputs.ARTIFACTID, 'lastCompleted') != true
+         if: github.event.inputs.ARTIFACTID != 'lastCompleted' && github.event.inputs.ARTIFACTID != ''
          run: |
           echo "ARTIFACT_ID=${{ github.event.inputs.ARTIFACTID }}" >> $GITHUB_ENV         
        - name: content with file replacement
