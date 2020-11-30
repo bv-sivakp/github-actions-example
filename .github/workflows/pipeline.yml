@@ -34,11 +34,13 @@ jobs:
        - name: Replace it with Input value
          if: ${{ github.event.inputs.ArtifactId }} == 'lastCompleted'
          run: |
-          sed -i "s/#ARTIFACT_ID#/${{ github.event.inputs.ARTIFACTID }}/g" ./testfile.json
+          echo "ARTIFACT_ID=${{ github.event.inputs.ARTIFACTID }}" >> $GITHUB_ENV
+          sed -i "s/#ARTIFACT_ID#/${{ env.ARTIFACT_ID }}/g" ./testfile.json
        - name: Replace it with Input value
          if: ${{ github.event.inputs.ArtifactId }} != 'lastCompleted' && ${{ github.event.inputs.ArtifactId }} != ''
          run: |
-          sed -i "s/#ARTIFACT_ID#/${{ github.event.inputs.ARTIFACTID }}/g" ./testfile.json       
+          echo "ARTIFACT_ID=${{ github.event.inputs.ARTIFACTID }}" >> $GITHUB_ENV
+          sed -i "s/#ARTIFACT_ID#/${{ env.ARTIFACT_ID }}/g" ./testfile.json       
        - name: content with file replacement
          run: |          
           sed -i "s/#APP-NAME#/$(echo ${{ github.event.inputs.APPNAME }} | tr [A-Z] [a-z])/g" ./testfile.json
