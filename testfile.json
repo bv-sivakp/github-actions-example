@@ -1,4 +1,5 @@
 {
     "app_name": "#APP-NAME#",
-    "version": "#VERSION#"
+    "version": "#VERSION#",
+    "artifact_id": "#ARTIFACT_ID#"
 }
