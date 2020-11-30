@@ -32,12 +32,12 @@ jobs:
        - name: Checkout
          uses: actions/checkout@v2
        - name: Replace it wit latest
-         if: ${{ github.event.inputs.ARTIFACTID }} == 'lastCompleted'
+         if: contains(github.event.inputs.ARTIFACTID, 'lastCompleted')
          run: |
           echo "ARTIFACT_ID=${{ github.event.inputs.ARTIFACTID }}" >> $GITHUB_ENV
           sed -i "s/#ARTIFACT_ID#/${{ env.ARTIFACT_ID }}/g" ./testfile.json
        - name: Replace it with Input value
-         if: ${{ github.event.inputs.ARTIFACTID }} != 'lastCompleted' && ${{ github.event.inputs.ARTIFACTID }} != ''
+         if: contains(github.event.inputs.ARTIFACTID, 'lastCompleted') != true
          run: |
           echo "ARTIFACT_ID=${{ github.event.inputs.ARTIFACTID }}" >> $GITHUB_ENV
           sed -i "s/#ARTIFACT_ID#/${{ env.ARTIFACT_ID }}/g" ./testfile.json       
