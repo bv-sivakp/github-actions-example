@@ -34,7 +34,7 @@ jobs:
        - name: Replace it wit latest
          if: contains(github.event.inputs.ARTIFACTID, 'lastCompleted')
          run: |
-          echo "ARTIFACT_ID=${{ github.event.inputs.ARTIFACTID }}" >> $GITHUB_ENV
+          echo "ARTIFACT_ID=github.event.inputs.ARTIFACTID" >> $GITHUB_ENV
           sed -i "s/#ARTIFACT_ID#/${{ env.ARTIFACT_ID }}/g" ./testfile.json
        - name: Replace it with Input value
          if: contains(github.event.inputs.ARTIFACTID, 'lastCompleted') != true
