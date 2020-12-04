@@ -1,3 +1,3 @@
-![](https://github.com/bv-sivakp/github-actions-example/workflows/shell%20commands/badge.svg?branch=master&event=push)
+![](https://github.com/bv-sivakp/github-actions-example/workflows/ENV%20variables/badge.svg?branch=testbadge&event=push)
 
 # github-actions-example
