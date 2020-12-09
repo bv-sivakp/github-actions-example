@@ -14,6 +14,12 @@ jobs:
         run: |
           node -v
           npm -v
+      - name: Testing Directory changes1
+        run: |
+          mkdir testingdir && cd testingdir
+      - name: Testing Directory changes2
+        run: |
+          pwd        
       - name: python Command
         run: |
           import platform
