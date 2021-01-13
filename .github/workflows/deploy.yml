@@ -1,0 +1,21 @@
+name: CF deploy pipeline
+
+on:
+  workflow_dispatch:
+    inputs:
+      MicroserviceName:
+        description: "Deployment candidate microservice"
+        required: true
+        default: "cci-platform-patientregistration-ms"
+      CFSpaceName:
+        description: "CF Space name"
+        required: true
+        default: "cci-platform-dev"
+      DeployTarget:
+        description: "Pick deploy target"
+        required: true
+        default: "DEV"
+      ArtifactId:
+        description: "Artifact Id"
+        required: true
+        default: "lastCompleted"
