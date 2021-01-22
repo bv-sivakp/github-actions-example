@@ -50,7 +50,9 @@ jobs:
           sed -i "s/#ARTIFACT_ID#/${{ env.ARTIFACT_ID }}/g" ./testfile.json
           cat ./testfile.json
        - name: Remove extension
+         env:
+           fileName: ${{ github.event.inputs.FileName }}
          run: |           
-           echo "${${{ github.event.inputs.FileName }}%.*}"
+           echo "${fileName%.*}"
               
            
