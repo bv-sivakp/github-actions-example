@@ -51,7 +51,7 @@ jobs:
           cat ./testfile.json
        - name: Remove extension
          run: |
-           FileName = ${{ github.event.inputs.FileName }}
-           echo ${FileName%.*}
+           filename=${{ github.event.inputs.FileName }}
+           echo "${filename%.*}"
               
            
