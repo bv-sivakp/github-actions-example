@@ -16,7 +16,8 @@ jobs:
       - name: Remove file extension
         run: |
          fileName=testfile.txt
-         fileNameWithoutExtn = "${fileName%.*}"
+         fileNameWithoutExtn="${fileName%.*}"
+         echo $fileNameWithoutExtn
          echo "newfilename=$(echo $fileNameWithoutExtn)" >> $GITHUB_ENV
       - name: publish artifacts
         uses: actions/upload-artifact@v2     
