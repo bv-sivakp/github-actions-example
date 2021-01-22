@@ -15,8 +15,10 @@ jobs:
          fetch-depth: 0      
       - name: publish artifacts
         uses: actions/upload-artifact@v2
+        env:
+          file-name: test-file
         with:
-          name: test-file
+          name: ${testfile}
           path: testfile.json
       - name: download artifacts
         uses: actions/download-artifact@v2
