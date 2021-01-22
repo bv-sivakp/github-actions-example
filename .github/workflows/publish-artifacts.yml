@@ -17,7 +17,7 @@ jobs:
         run: |
          fileName=testfile.txt
          fileNameWithoutExtn = "${fileName%.*}"
-         echo "newfilename=$fileNameWithoutExtn" >> $GITHUB_ENV
+         echo "newfilename=$(echo fileNameWithoutExtn)" >> $GITHUB_ENV
       - name: publish artifacts
         uses: actions/upload-artifact@v2     
         with:
