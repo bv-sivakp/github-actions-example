@@ -16,9 +16,9 @@ jobs:
       - name: publish artifacts
         uses: actions/upload-artifact@v2
         env:
-          file-name: test-file
+          file_name: test-file
         with:
-          name: ${file-name}
+          name: ${{ env.file_name }}
           path: testfile.json
       - name: download artifacts
         uses: actions/download-artifact@v2
