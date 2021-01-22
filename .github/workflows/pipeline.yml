@@ -14,7 +14,11 @@ on:
       ARTIFACTID:
         description: "ARTIFACT ID"
         required: true
-        default: "lastCompleted"    
+        default: "lastCompleted"
+      FileName:
+        description: "FileName"
+        required: false
+        default: "Testfile.txt"       
 
 jobs:
   verify-input-parameters:
@@ -45,5 +49,8 @@ jobs:
           sed -i "s/#VERSION#/${{ github.event.inputs.VERSION }}/g" ./testfile.json
           sed -i "s/#ARTIFACT_ID#/${{ env.ARTIFACT_ID }}/g" ./testfile.json
           cat ./testfile.json
+       - name: Remove extension
+         run: |
+           echo ${${{ github.event.inputs.FileName }}%.*}
               
            
