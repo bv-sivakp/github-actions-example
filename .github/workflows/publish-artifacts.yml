@@ -18,7 +18,7 @@ jobs:
         env:
           file-name: test-file
         with:
-          name: ${testfile}
+          name: ${file-name}
           path: testfile.json
       - name: download artifacts
         uses: actions/download-artifact@v2
