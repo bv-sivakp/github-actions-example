@@ -12,13 +12,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2.3.3
         with:
-         fetch-depth: 0      
+         fetch-depth: 0
+      - name: Remove file extension
+        run: |
+         fileName=testfile.txt
+         fileNameWithoutExtn = "${fileName%.*}"
+         echo "newfilename=$fileNameWithoutExtn" >> $GITHUB_ENV
       - name: publish artifacts
-        uses: actions/upload-artifact@v2
-        env:
-          file_name: testfile.txt
+        uses: actions/upload-artifact@v2     
         with:
-          name: "${{ env.file_name }}%.*"
+          name: "${{ env.newfilename }}"
           path: testfile.json
       - name: download artifacts
         uses: actions/download-artifact@v2
