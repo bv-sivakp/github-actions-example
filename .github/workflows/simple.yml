@@ -25,6 +25,13 @@ jobs:
           import platform
           print(platform.processor()) 
         shell: python
+      - id: sets-a-secret
+        run: |
+          the_secret=$((RANDOM))
+          echo "::add-mask::$the_secret"
+          echo "::set-output name=secret-number::$the_secret"
+      - run: |
+          echo "the secret number is ${{ steps.sets-a-secret.outputs.secret-number }}"  
   run-windows-shell-command:
      runs-on: windows-latest
      needs: ["run-shell-command"]
