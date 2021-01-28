@@ -1,24 +1,6 @@
 name: workflow dispatch pipeline
 
-on:
-  workflow_dispatch:
-    inputs:
-      VERSION:
-        description: "Version"
-        required: true
-        default: "0.1.0"
-      APPNAME:
-        description: "Application name"
-        required: true
-        default: "web-api"
-      ARTIFACTID:
-        description: "ARTIFACT ID"
-        required: true
-        default: "lastCompleted"
-      FileName:
-        description: "FileName"
-        required: false
-        default: "Testfile.txt"
+on:  
   push:
     branches: 
       - '**'             
