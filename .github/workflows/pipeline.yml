@@ -18,7 +18,10 @@ on:
       FileName:
         description: "FileName"
         required: false
-        default: "Testfile.txt"       
+        default: "Testfile.txt"
+  push:
+    branches: 
+      - '**'             
 
 jobs:
   verify-input-parameters:
