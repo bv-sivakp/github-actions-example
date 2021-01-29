@@ -33,7 +33,8 @@ jobs:
       - run: |
           echo "the secret number is ${{ steps.sets-a-secret.outputs.secret-number }}"
       - run: |
-          # RUN_INFO={"GITHUB_RUN_NUMBER": $GITHUB_RUN_NUMBER, "URL": $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID }
+          RUN_INFO='{"GITHUB_RUN_NUMBER": $GITHUB_RUN_NUMBER, "URL": $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID }'
+          echo $RUN_INFO
           echo "GITHUB_SERVER_URL $GITHUB_SERVER_URL"
           echo "GITHUB_REPOSITORY $GITHUB_REPOSITORY"
           echo "GITHUB_RUN_ID $GITHUB_RUN_ID"
