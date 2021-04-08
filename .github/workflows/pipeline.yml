@@ -41,7 +41,7 @@ jobs:
          uses: actions/checkout@v2
        - name: Check Defaults
          run: |
-          if [ ${{ github.event.inputs.CheckDefaults }} == "true"  ]
+          if [ ${{ github.event.inputs.CheckDefaults }} == true  ]
           then
             echo "Check Defaults on true is ${{ github.event.inputs.CheckDefaults }}"
           else
