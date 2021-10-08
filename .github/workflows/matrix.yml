@@ -2,32 +2,23 @@ name: Strategy
 on: [push]
 
 jobs:
- node-version:
+ pipe-line:
+   name: pipeline
+   runs-on:  ubuntu-latest
+   steps:
+     - name: Echo
+       run: |
+         echo "pipeline job"
+ test-matrix-strategy:
+   name: testmatrixstrategy
+   runs-on: ubuntu-latest    
    strategy:
        matrix:
-         os: [ macos-latest, ubuntu-latest, windows-latest ]
-         node_version: [6, 8, 10]
-         include:
-           - os: ubuntu-latest
-             node_version: 8
-             is_ubuntu_8: "true"
-         exclude:
-           - os: ubuntu-latest
-             node_version: 6
-           # - os: macos-latest
-           #  node_version: 8  
-       # fail-fast: true
-       # max-parallel: 2
-   runs-on: ${{ matrix.os }}
-   env:
-     IS_UBUNTU_8: ${{ matrix.is_ubuntu_8 }}
+         repo: [ repo-1, repo-2, repo-3 ]
+         repo-tag: [ repo-1-tag, repo-2-tag, repo-3-tag ]         
+       max-parallel: 1   
    steps:
-       - name: Log node version
-         run: node -v
-       - uses: actions/setup-node@v1
-         with:
-           node-version: ${{ matrix.node_version }}
-       - name: Log node specific version
-         run: | 
-           node -v
-           echo $IS_UBUNTU_8
+       - name: Echo Inputs
+         run: |
+           echo "Repository ${{ matrix.repo }}"
+           echo "Repository Tag ${{ matrix.repo-tag }}"
